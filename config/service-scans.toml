@@ -130,8 +130,8 @@ ignore-service-names = [
     command = 'nikto -ask=no -h {scheme}://{address}:{port} 2>&1 | tee "{scandir}/{protocol}_{port}_{scheme}_nikto.txt"'
 
     [[http.scan]]
-    name = 'dirb'
-    command = 'dirb {scheme}://{address}:{port}/ /usr/share/seclists/Discovery/Web-Content/common.txt -l -r -S -X ",.txt,.html,.php,.asp,.aspx" -o "{scandir}/{protocol}_{port}_{scheme}_dirb.txt"'
+    name = 'gobuster'
+    command = 'gobuster dir -u {scheme}://{address}:{port}/ /usr/share/seclists/Discovery/Web-Content/common.txt -t 20 -z -k -q -o "{scandir}/{protocol}_{port}_{scheme}_gobuster.txt"'
 
     [[http.manual]]
     description = '(dirsearch) Multi-threaded recursive directory/file enumeration for web servers using various wordlists:'
